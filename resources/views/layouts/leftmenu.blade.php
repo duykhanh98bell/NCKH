@@ -21,14 +21,14 @@
                 </div>
             </li>
             <li>
-                <a href="{{URL::to('/')}}"><i class="fa fa-th-large"></i> <span>Danh sách Dự án</span> <span></span></a>
-                <!-- <ul class="nav nav-second-level">
-                    <li class="active"><a href="index.html">Dashboard v.1</a></li>
-                    <li><a href="dashboard_2.html">Dashboard v.2</a></li>
-                    <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Quản lý dự án</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li ><a href="{{URL::to('/')}}">Danh sách dự án</a></li>
+                    <li><a href="{{URL::to('/createProject')}}">Tạo dự án</a></li>
+                    <li><a href="{{URL::to('/projectDetail')}}">Chi tiết dự án</a></li>
                     <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                     <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
-                </ul> -->
+                </ul>
             </li>
             <li>
                 <a href="{{URL::to('check')}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Tiến độ dự án</span></a>
@@ -56,15 +56,16 @@
                 </ul>
             </li> -->
             <li>
-                <a href=""><i class="fa fa-pie-chart"></i> <span class="nav-label">Tạo mới Công việc</span>  </a>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-flask"></i> <span class="nav-label">Cập nhật hồ sơ nhân viên</span></a>
+                <a href="{{URL::to('createJob')}}"><i class="fa fa-pie-chart"></i> <span class="nav-label">Tạo mới Công việc</span>  </a>
             </li>
             <!-- <li>
-                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                <a href=""><i class="fa fa-flask"></i> <span class="nav-label">Cập nhật hồ sơ nhân viên</span></a>
+            </li> -->
+            
+            <li>
+                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Quản lý nhân sự</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="form_basic.html">Basic form</a></li>
+                    <li><a href="{{route('contact')}}">Danh sách nhân viên</a></li>
                     <li><a href="form_advanced.html">Advanced Plugins</a></li>
                     <li><a href="form_wizard.html">Wizard</a></li>
                     <li><a href="form_file_upload.html">File Upload</a></li>
@@ -73,7 +74,7 @@
                     <li><a href="form_markdown.html">Markdown</a></li>
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="float-right label label-primary">SPECIAL</span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="contacts.html">Contacts</a></li>
