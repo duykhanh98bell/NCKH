@@ -56,10 +56,10 @@
                 </ul>
             </li> -->
             <li>
-                <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Tạo mới Công việc</span>  </a>
+                <a href=""><i class="fa fa-pie-chart"></i> <span class="nav-label">Tạo mới Công việc</span>  </a>
             </li>
             <li>
-                <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Cập nhật hồ sơ nhân viên</span></a>
+                <a href=""><i class="fa fa-flask"></i> <span class="nav-label">Cập nhật hồ sơ nhân viên</span></a>
             </li>
             <!-- <li>
                 <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
