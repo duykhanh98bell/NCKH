@@ -20,7 +20,7 @@
                     IN+
                 </div>
             </li>
-            <li class="active">
+            <li>
                 <a href="{{URL::to('/')}}"><i class="fa fa-th-large"></i> <span>Danh sách Dự án</span> <span></span></a>
                 <!-- <ul class="nav nav-second-level">
                     <li class="active"><a href="index.html">Dashboard v.1</a></li>
