@@ -14,4 +14,20 @@ class HomeController extends Controller
     {
     	return view('check');
     }
+    public function contact()
+    {
+    	return view('contact');
+    }
+    public function projectDetail()
+    {
+    	return view('project-detail');
+    }
+    public function createProject()
+    {
+    	return view('create-project');
+    }
+    public function createJob()
+    {
+    	return view('create-job');
+    }
 }
