@@ -2,7 +2,7 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
 	<div class="col-lg-10">
-		<h2>Basic Form</h2>
+		<h2>Create User</h2>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
 				<a href="index.html">Home</a>
@@ -11,7 +11,7 @@
 				<a>Forms</a>
 			</li>
 			<li class="breadcrumb-item active">
-				<strong>Basic Form</strong>
+				<strong>Create User</strong>
 			</li>
 		</ol>
 	</div>
@@ -28,39 +28,63 @@
 				<h5>All form elements <small>With custom checbox and radion elements.</small></h5>
 			</div>
 			<div class="ibox-content">
-				<form action="" method="post">
+				<form action="" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Tên dự án</label>
+						<label class="col-sm-2 col-form-label">Tên nhân viên</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_name">
+							<input type="text" class="form-control" name="name">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Tóm tắt</label>
+						<label class="col-sm-2 col-form-label">Địa chỉ</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_tomtat">
+							<input type="text" class="form-control" name="address">
 							<!-- <input type="text" class="form-control"> -->
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Deadline</label>
+						<label class="col-sm-2 col-form-label">Phone</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control fa fa-calendar" name="duan_deadline">
+							<input type="number" class="form-control" name="Phone">
+							<!-- <input type="text" class="form-control"> -->
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" name="email">
+							<!-- <input type="text" class="form-control"> -->
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-10">
+							<input type="Password" class="form-control" name="password">
+							<!-- <input type="text" class="form-control"> -->
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Avatar</label>
+						<div class="col-sm-10">
+							<input type="file" class="form-control fa " name="avatar">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 
 					<div class="form-group row">
-						<label class="col-sm-2 col-form-label">Trạng thái</label>
+						<label class="col-sm-2 col-form-label">Chức vụ</label>
 
 						<div class="col-sm-10">
-							<select class="form-control m-b" name="duan_status">
-								<option>Đang khởi tạo</option>
-								<option>Tiến hành</option>
-								<option>Kết thúc</option>
+							<select class="form-control m-b" name="user_role">
+								@foreach($role as $ro)
+								<option value="{{$ro->id}}">{{$ro->name}}</option>
+								@endforeach
 							</select>
 						</div>
 						<div class="hr-line-dashed"></div>

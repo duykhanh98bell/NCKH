@@ -33,14 +33,14 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Tên dự án</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_name">
+							<input type="text" class="form-control" name="duan_name" value="{{$id->name}}">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Tóm tắt</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_tomtat">
+							<input type="text" class="form-control" name="duan_tomtat" value="{{$id->tomtat}}">
 							<!-- <input type="text" class="form-control"> -->
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Deadline</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control fa fa-calendar" name="duan_deadline">
+							<input type="date" class="form-control fa fa-calendar" name="duan_deadline" value="{{$id->deadline}}">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>

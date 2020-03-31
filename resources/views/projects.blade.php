@@ -22,7 +22,7 @@
                 <div class="ibox-title">
                     <h5>All projects assigned to this account</h5>
                     <div class="ibox-tools">
-                        <a href="" class="btn btn-primary btn-xs">Create new project</a>
+                        <a href="{{URL::to('createProject')}}" class="btn btn-primary btn-xs">Create new project</a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -40,17 +40,20 @@
 
                             <table class="table table-hover">
                                 <tbody>
+                                    @foreach($duan as $da)
                                     <tr>
                                         <td class="project-status">
-                                            <span class="label label-primary">Active</span>
+                                            <span class="label label-primary">{{$da->status}}</span>
                                         </td>
                                         <td class="project-title">
-                                            <a href="project_detail.html">Contract with Zender Company</a>
+                                            <a href="project_detail.html">{{$da->name}}</a>
                                             <br/>
-                                            <small>Created 14.08.2014</small>
+                                            <small>{{$da->tomtat}}</small>
+                                            <br/>
+                                            <small>Tạo lúc: {{$da->created_at}}</small>
                                         </td>
                                         <td class="project-completion">
-                                            <small>Completion with: 48%</small>
+                                            <small>deadline: {{$da->deadline}}</small>
                                             <div class="progress progress-mini">
                                                 <div style="width: 48%;" class="progress-bar"></div>
                                             </div>
@@ -63,11 +66,12 @@
                                             <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a5.jpg')}}"></a>
                                         </td>
                                         <td class="project-actions">
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="{{URL::to('check/'.$da->id)}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            <a href="{{URL::to('editProject/'.$da->id)}}" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    @endforeach
+                                    <!-- <tr>
                                         <td class="project-status">
                                             <span class="label label-primary">Active</span>
                                         </td>
@@ -312,7 +316,7 @@
                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
                                             <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
