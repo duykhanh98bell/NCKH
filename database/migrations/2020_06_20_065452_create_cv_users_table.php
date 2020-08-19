@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTailieusTable extends Migration
+class CreateCvUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTailieusTable extends Migration
      */
     public function up()
     {
-        Schema::create('tailieus', function (Blueprint $table) {
-            $table->Increments('id_tailieu');
-            $table->Integer('id_da');
-            $table->string('link');
+        Schema::create('cv_users', function (Blueprint $table) {
+            $table->Integer('id_cv')->nullable();
+            $table->Integer('id_user')->nullable();
+            $table->Integer('nhom')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTailieusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tailieus');
+        Schema::dropIfExists('cv_users');
     }
 }

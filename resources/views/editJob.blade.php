@@ -34,25 +34,45 @@
 						<label class="col-sm-2 col-form-label" >Tên công việc</label>
 
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="name_job">
+							<input type="text" class="form-control" name="name_job" value="{{$editCv->name_job}}">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Mô tả</label>
 						<div class="col-sm-10">
-							<textarea id="" cols="120" rows="10" name="mota_job"></textarea>
+							<textarea id="" cols="120" rows="10" name="mota_job">{{$editCv->mota_job}}</textarea>
 							<!-- <input type="text" class="form-control"> -->
 						</div>
 					</div>
+
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Deadline</label>
 						<div class="col-sm-10">
+						@if($editCv->deadline_job)
+							<p>{{$editCv->deadline_job}}</p>
+							<input type="hidden" class="form-control fa fa-calendar" name="deadline_job" value="{{$editCv->deadline_job}}">
+						@else
 							<input type="date" class="form-control fa fa-calendar" name="deadline_job">
+						@endif
 						</div>
 					</div>
+
 					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Deadline now</label>
+						<div class="col-sm-10">
+						@if($editCv->deadline_nowjob)
+							<p>{{$editCv->deadline_nowjob}}</p>
+							<input type="hidden" class="form-control fa fa-calendar" name="deadline_nowjob" value="{{$editCv->deadline_nowjob}}">
+						@else
+							
+						@endif
+							<input type="date" class="form-control fa fa-calendar" name="deadline_nowjob" value="{{$editCv->deadline_nowjob}}">
+						</div>
+					</div>
+					<!-- <div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">File</label>
 						<div class="col-sm-10">
@@ -61,7 +81,7 @@
                                 <label for="logo" class="custom-file-label">Choose file...</label>
                             </div>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
@@ -75,25 +95,38 @@
 							</div> -->
 							<div>
 								<label> 
-									<input type="radio" checked="" value="1" id="optionsRadios1" name="uutien"> D
+									<input type="radio" 
+                                    @if($editCv->uutien == 1)
+                                    checked
+                                    @endif
+                                     value="1" id="optionsRadios1" name="uutien"> D
 									
 								</label>
 							</div>
 							<div>
 								<label> 
-									<input type="radio"  value="2" id="optionsRadios1" name="uutien"> C
+									<input type="radio" 
+                                    @if($editCv->uutien == 2)
+                                    checked
+                                    @endif  value="2" id="optionsRadios1" name="uutien"> C
 								</label>
 							</div>
 							<div>
 								<label> 
 									
-									<input type="radio"  value="3" id="optionsRadios1" name="uutien"> B
+									<input type="radio"
+                                    @if($editCv->uutien == 3)
+                                    checked
+                                    @endif  value="3" id="optionsRadios1" name="uutien"> B
 								</label>
 							</div>
 							<div>
 								<label> 
 									
-									<input type="radio" value="4" id="optionsRadios1" name="uutien"> A
+									<input type="radio"
+                                    @if($editCv->uutien == 4)
+                                    checked
+                                    @endif value="4" id="optionsRadios1" name="uutien"> A
 								</label>
 							</div>
 						</div>
@@ -105,13 +138,25 @@
 
 						<div class="col-sm-10">
 							<label> 
-								<input type="radio" checked="" value="1" name="status_job" id="inlineCheckbox1"> Mới tạo
+								<input type="radio" 
+                                @if($editCv->status_job == 1)
+                                    checked
+                                @endif
+                                 value="1" name="status_job" id="inlineCheckbox1"> Mới tạo
 							</label> 
 							<label class="checkbox-inline">
-								<input type="radio" value="2" name="status_job" id="inlineCheckbox2"> Đang làm
+								<input type="radio" 
+                                @if($editCv->status_job == 2)
+                                    checked
+                                @endif
+                                value="2" name="status_job" id="inlineCheckbox2"> Đang làm
 							</label> 
 							<label>
-								<input type="radio" value="3" name="status_job" id="inlineCheckbox3"> Hoàn thành
+								<input type="radio" 
+                                @if($editCv->status_job == 3)
+                                    checked
+                                @endif
+                                value="3" name="status_job" id="inlineCheckbox3"> Hoàn thành
 							</label>
 						</div>
 					</div>
@@ -125,7 +170,16 @@
 							<select class="form-control m-b" name="addUser">
 								<option></option>
 							@foreach($user as $us)
-								<option value="{{ $us->id }}" >{{ $us->name }}</option>
+
+								<option
+                                
+                                @if(isset($selectCv[0]))
+                                @if($selectCv[0]->id_user == $us->id)
+                                    selected
+                                @endif
+                                @endif
+                                 value="{{ $us->id }}" >{{ $us->name }}</option>
+
 							@endforeach	
 							</select>
 

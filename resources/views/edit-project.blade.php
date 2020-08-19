@@ -33,24 +33,64 @@
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Tên dự án</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_name" value="{{$id->name}}">
+							<input type="text" class="form-control" name="duan_name" value="{{$detail->name_duan}}">
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Tóm tắt</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="duan_tomtat" value="{{$id->tomtat}}">
+							<input type="text" class="form-control" name="duan_tomtat" value="{{$detail->tomtat}}">
 							<!-- <input type="text" class="form-control"> -->
 						</div>
 					</div>
+
 					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Deadline</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control fa fa-calendar" name="duan_deadline" value="{{$id->deadline}}">
+							<p>{{$detail->deadline}}</p>
+							
 						</div>
 					</div>
+					@if($detail->deadline_now)
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Deadline thuc te</label>
+						<div class="col-sm-10">
+							<p>{{$detail->deadline_now}}</p>
+							
+						</div>
+					</div>
+					@endif
+
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Deadline thuc te</label>
+						<div class="col-sm-10">
+							<input type="date" class="form-control fa fa-calendar" name="deadline_now" value="{{$detail->deadline_now}}">
+						</div>
+					</div>
+
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nguoi tham gia</label>
+						<div class="col-sm-10">
+
+						
+						
+						@foreach($listUser as $user)
+							
+								 <label>
+											<input	type="checkbox" value="{{$user->id}}" name="user[]"> {{$user->name}} 
+								</label> <br>
+							
+							
+						@endforeach	
+
+						</div>
+					</div>
+
 					<div class="hr-line-dashed"></div>
 
 					<div class="form-group row">
@@ -58,9 +98,9 @@
 
 						<div class="col-sm-10">
 							<select class="form-control m-b" name="duan_status">
-								<option>Đang khởi tạo</option>
-								<option>Tiến hành</option>
-								<option>Kết thúc</option>
+								<option @if($detail->status ==1) selected @endif value="1">Đang khởi tạo</option>
+								<option @if($detail->status ==2) selected @endif value="2">Tiến hành</option>
+								<option @if($detail->status ==3) selected @endif value="3">Kết thúc</option>
 							</select>
 						</div>
 						<div class="hr-line-dashed"></div>

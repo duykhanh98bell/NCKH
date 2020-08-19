@@ -2,17 +2,17 @@
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Agile board</h2>
+        <h2>Tiến độ dự án</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="index.html">Danh sách dự án</a>
             </li>
             <li class="breadcrumb-item">
-                <a>Miscellaneous</a>
+                <strong>Tiến độ dự án</strong>
             </li>
-            <li  class="breadcrumb-item active">
+            <!-- <li  class="breadcrumb-item active">
                 <strong>Agile board</strong>
-            </li>
+            </li> -->
         </ol>
     </div>
     <div class="col-lg-2">
@@ -31,18 +31,30 @@
                     <div class="input-group">
                         <input type="text" placeholder="Add new task. " class="input form-control-sm form-control">
                         <span class="input-group-btn">
-                            <a href=""><button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button></a>
+                            <a href="{{URL::to('createJob/'.$id)}}"><button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button></a>
                         </span>
                     </div>
 
                     <ul class="sortable-list connectList agile-list" id="todo">
                         @foreach($cv as $cc)
-                        @if($cc->status == 1)
-                        <li class="warning-element" id="task1">
-                            Simply dummy text of the printing and typesetting industry.
+                        @if($cc->status_job == 1)
+                        
+                        <li class="@if($cc->uutien == 1 ) info-element 
+                        @elseif($cc->uutien ==2) success-element
+                        @elseif($cc->uutien == 3) warning-element
+                        @else danger-element @endif" id="task1">
+                            {{$cc->name_job}}
+                            @foreach($checkUser as $img)
+                                @if($img->id_cv == $cc->id)
+                                <a href=""><img alt="image" class="float-right btn btn-xs btn-white rounded-circle" width="50" src="../avatar/{{$img->avatar}}"></a>
+                                @endif
+                            @endforeach
                             <div class="agile-detail">
-                                <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
-                                <i class="fa fa-clock-o"></i> 12.10.2015
+                                <a href="{{URL::to('editJob/'.$cc->id.'/'.$id)}}" class="float-right btn btn-xs btn-white">Tag</a>
+                                
+                                <i class="fa fa-clock-o"> {{$cc->deadline_job}}</i>
+                                &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-clock-o"> {{$cc->deadline_nowjob}}</i>
                             </div>
                         </li>
                         @endif
@@ -57,13 +69,25 @@
                     <h3>In Progress</h3>
                     <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
                     <ul class="sortable-list connectList agile-list" id="inprogress">
-                        @foreach($cv as $cc)
-                        @if($cc->status == 2)
-                        <li class="success-element" id="task9">
-                            Quisque venenatis ante in porta suscipit.
+                    @foreach($cv as $cc)
+                        @if($cc->status_job == 2)
+                        
+                        <li class="@if($cc->uutien == 1 ) info-element 
+                        @elseif($cc->uutien ==2) success-element
+                        @elseif($cc->uutien == 3) warning-element
+                        @else danger-element @endif" id="task1">
+                            {{$cc->name_job}}
+                            @foreach($checkUser as $img)
+                                @if($img->id_cv == $cc->id)
+                                <a href=""><img alt="image" class="float-right btn btn-xs btn-white rounded-circle" width="50" src="../avatar/{{$img->avatar}}"></a>
+                                @endif
+                            @endforeach
                             <div class="agile-detail">
-                                <a href="#" class="float-right btn btn-xs btn-white">Tag</a>
-                                <i class="fa fa-clock-o"></i> 12.10.2015
+                                <a href="{{URL::to('editJob/'.$cc->id.'/'.$id)}}" class="float-right btn btn-xs btn-white">Tag</a>
+                                
+                                <i class="fa fa-clock-o"> {{$cc->deadline_job}}</i>
+                                &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-clock-o"> {{$cc->deadline_nowjob}}</i>
                             </div>
                         </li>
                         @endif
@@ -78,15 +102,29 @@
                     <h3>Completed</h3>
                     <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
                     <ul class="sortable-list connectList agile-list" id="completed">
-                        @foreach($cv as $cc)
-                        @if($cc->status == 3)
-                        <li class="info-element" id="task16">
-                            Sometimes by accident, sometimes on purpose (injected humour and the like).
+                    @foreach($cv as $cc)
+                        @if($cc->status_job == 3)
+                        
+                        
+                        <li class="@if($cc->uutien == 1 ) info-element 
+                        @elseif($cc->uutien ==2) success-element
+                        @elseif($cc->uutien == 3) warning-element
+                        @else danger-element @endif" id="task1">
+                            {{$cc->name_job}}
+                            @foreach($checkUser as $img)
+                                @if($img->id_cv == $cc->id)
+                                <a href=""><img alt="image" class="float-right btn btn-xs btn-white rounded-circle" width="50" src="../avatar/{{$img->avatar}}"></a>
+                                @endif
+                            @endforeach
                             <div class="agile-detail">
-                                <a href="#" class="float-right btn btn-xs btn-white">Mark</a>
-                                <i class="fa fa-clock-o"></i> 16.11.2015
+                                <a href="{{URL::to('editJob/'.$cc->id.'/'.$id)}}" class="float-right btn btn-xs btn-white">Tag</a>
+                                
+                                <i class="fa fa-clock-o"> {{$cc->deadline_job}}</i>
+                                &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-clock-o"> {{$cc->deadline_nowjob}}</i>
                             </div>
                         </li>
+                        
                         @endif
                         @endforeach
                     </ul>

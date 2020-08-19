@@ -15,8 +15,7 @@ class CreateBinhluansTable extends Migration
     {
         Schema::create('binhluans', function (Blueprint $table) {
             $table->Increments('id');
-            $table->UnsignedInteger('id_cv');
-            $table->foreign('id_cv')->references('id')->on('congviecs');
+            $table->Integer('id_cv');
             $table->string('content');
             $table->timestamps();
         });

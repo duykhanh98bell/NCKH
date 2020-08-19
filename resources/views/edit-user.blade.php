@@ -77,6 +77,70 @@
 							<img src="{{asset('avatar/'.$find->avatar)}}" alt="" width="200" >
 						</div>
 					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nam Sinh</label>
+						<div class="col-sm-10">
+							<input type="date" value="{{$find->birth}}" name="birth" class="form-control fa fa-calendar">
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Gioi tinh</label>
+						<div class="col-sm-10">
+							<select class="form-control m-b" name="gender">
+								<option value="Nam" 
+								@if($find->gender=="Nam")
+								checked="checked"
+								@else
+								""
+								@endif
+								>Nam</option>
+								<option value="Nu" 
+								@if($find->gender=="Nu")
+								checked="checked"
+								@else
+								""
+								@endif
+								>Nu</option>
+							</select>
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Trang thai</label>
+						<div class="col-sm-10">
+							<select class="form-control m-b" name="status_user">
+								<option value="fresher" @if($find->status_user=="fresher")
+								checked="checked"
+								@else
+								""
+								@endif>Fresher</option>
+								<option value="junior" @if($find->status_user=="junior")
+								checked="checked"
+								@else
+								""
+								@endif>Junior</option>
+								<option value="middle" @if($find->status_user=="middle")
+								checked="checked"
+								@else
+								""
+								@endif>Middle</option>
+								<option value="senior" @if($find->status_user=="senior")
+								checked="checked"
+								@else
+								""
+								@endif>Senior</option>
+								<option value="out" @if($find->status_user=="out")
+								checked="checked"
+								@else
+								""
+								@endif>Out</option>
+							</select>
+						</div>
+					</div>
 					<div class="hr-line-dashed"></div>
 
 					<div class="form-group row">

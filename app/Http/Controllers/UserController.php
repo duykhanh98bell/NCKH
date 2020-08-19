@@ -7,6 +7,7 @@ use App\Http\Controllers;
 use App\Role;
 use App\User;
 use App\user_role;
+use Auth;
 
 
 class UserController extends Controller
@@ -39,10 +40,13 @@ class UserController extends Controller
     	User::create([
     		'name'=>$Request->name,
     		'avatar'=>$avatar,
-    		'address'=>$Request->address,
-    		'Phone'=>$Request->Phone,
+			'address'=>$Request->address,
+			'birth'=>$Request->birth,
+			'gender'=>$Request->gender,
+    		'phone'=>$Request->Phone,
     		'email'=>$Request->email,
-    		'password'=>bcrypt($Request->password),
+			'password'=>bcrypt($Request->password),
+			'status_user'=>$Request->status_user
     	]);
     	
     	$id = User::where(['email'=>$Request->email])->first();
@@ -65,11 +69,16 @@ class UserController extends Controller
     }
     public function update_user($id, Request $Request)
     {
+		// dd($Request);
     	$UserChange = User::find($id);
     	$UserChange->update([
     		'name'=>$Request->name,
     		'address'=>$Request->address,
-    		'phone'=>$Request->phone,
+			'phone'=>$Request->phone,
+			'birth'=>$Request->birth,
+			'gender'=>$Request->gender,
+			'password'=>bcrypt($Request->password),
+			'status_user'=>$Request->status_user
     	]);
 
     	$userroleChange = user_role::where(['user_id'=>$id])->first();
@@ -78,6 +87,23 @@ class UserController extends Controller
     	]);
     	//dd($role);
     	return redirect()->route('contact')->with('Tạo mới thành công');
+	}
+	function login()
+	{
+		return view('login');
+	}
+	function postLogin(Request $Request)
+	{
+		if (Auth::attempt($Request->only('email','password'),$Request->remember)) {
+    		return redirect()->to('/')->with('success','Đăng nhập thành công');
+    	}else{
+    		return redirect()->back()->with('error','Đăng nhập thất bại');
+    	}
+	}
+	public function logOut()
+    {
+        Auth::logout();
+        return redirect('login');
     }
 
 }

@@ -3,14 +3,14 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2>Project list</h2>
+        <h2>Danh sách dự án</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+            <strong>Danh sách dự án</strong>
             </li>
-            <li class="breadcrumb-item active">
-                <strong>Project list</strong>
-            </li>
+            <!-- <li class="breadcrumb-item active">
+                <strong>Danh sách dự án</strong>
+            </li> -->
         </ol>
     </div>
 </div>
@@ -20,9 +20,9 @@
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>All projects assigned to this account</h5>
+                    <h5>Tất cả dự án đã được tạo</h5>
                     <div class="ibox-tools">
-                        <a href="{{URL::to('createProject')}}" class="btn btn-primary btn-xs">Create new project</a>
+                        <a href="{{URL::to('createProject')}}" class="btn btn-primary btn-xs">Tạo mới dự án</a>
                     </div>
                 </div>
                 <div class="ibox-content">
@@ -43,27 +43,33 @@
                                     @foreach($duan as $da)
                                     <tr>
                                         <td class="project-status">
-                                            <span class="label label-primary">{{$da->status}}</span>
+                                            <span class="label label-primary">@if($da->status == 1) Khởi tạo @elseif($da->status ==2) Đang tiến hành @elseif($da->status ==3) Kết thúc @endif </span>
                                         </td>
                                         <td class="project-title">
-                                            <a href="project_detail.html">{{$da->name}}</a>
+                                            <a href="{{URL::to('check/'.$da->id)}}">{{$da->ma_duan}}</a>: &nbsp;
+                                            <a href="{{URL::to('check/'.$da->id)}}">{{$da->name_duan}}</a>
                                             <br/>
                                             <small>{{$da->tomtat}}</small>
                                             <br/>
-                                            <small>Tạo lúc: {{$da->created_at}}</small>
+                                            
+                                            <a>Link: {{$da->link}}</a>
+                                        </td>
+                                        <td>
+                                            <small>Tạo lúc: {{$da->created_at}}</small> 
                                         </td>
                                         <td class="project-completion">
                                             <small>deadline: {{$da->deadline}}</small>
-                                            <div class="progress progress-mini">
+                                            <!-- <div class="progress progress-mini">
                                                 <div style="width: 48%;" class="progress-bar"></div>
-                                            </div>
+                                            </div> -->
                                         </td>
                                         <td class="project-people">
-                                            <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a3.jpg')}}"></a>
-                                            <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a1.jpg')}}"></a>
-                                            <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a2.jpg')}}"></a>
-                                            <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a4.jpg')}}"></a>
-                                            <a href=""><img alt="image" class="rounded-circle" src="{{asset('public/img/a5.jpg')}}"></a>
+                                        
+                                            @foreach($user as $us)
+                                                @if($da->id == $us->id_da && $us->isActive == "True")
+                                                    <a href=""><img alt="image" class="rounded-circle" src="avatar/{{$us->avatar}}"></a>
+                                                @endif
+                                            @endforeach
                                         </td>
                                         <td class="project-actions">
                                             <a href="{{URL::to('check/'.$da->id)}}" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>

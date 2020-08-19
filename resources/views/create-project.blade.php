@@ -28,7 +28,7 @@
 				<h5>All form elements <small>With custom checbox and radion elements.</small></h5>
 			</div>
 			<div class="ibox-content">
-				<form action="" method="post">
+				<form action="" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Tên dự án</label>
@@ -45,12 +45,59 @@
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+					@if(count($errors)>0)
+							<div class="alert alert-danger">
+							Upload Validation Error<br><br>
+								<ul>
+									@foreach($errors->all() as $error)
+									<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+						@endif
+						@if($message = Session::get('success'))
+							<div class="alert alert-success alert-block">
+								<button type="button" class="close" data-dismiss="alert">x</button>
+								<strong>{{ $message }}</strong>
+							</div>
+						@endif
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">File</label>
+						
+						<div class="col-sm-10">
+							<div class="">
+                                <input id="logo" type="file" class="" name="tailieu">
+                                <label for="logo" class="">Choose file...</label>
+                            </div>
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Deadline</label>
 						<div class="col-sm-10">
 							<input type="date" class="form-control fa fa-calendar" name="duan_deadline">
 						</div>
 					</div>
+
+					<div class="hr-line-dashed"></div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nguoi tham gia</label>
+						<div class="col-sm-10">
+
+						
+						
+						@foreach($listUser as $user)
+							
+								 <label>
+											<input	type="checkbox" value="{{$user->id}}" name="user[]"> {{$user->name}} 
+								</label> <br>
+							
+							
+						@endforeach	
+
+						</div>
+					</div>
+					
 					<div class="hr-line-dashed"></div>
 
 					<div class="form-group row">
@@ -58,11 +105,13 @@
 
 						<div class="col-sm-10">
 							<select class="form-control m-b" name="duan_status">
-								<option>Đang khởi tạo</option>
-								<option>Tiến hành</option>
-								<option>Kết thúc</option>
+								<option value="1">Đang khởi tạo</option>
+								<option value="2">Tiến hành</option>
+								<option value="3">Kết thúc</option>
 							</select>
 						</div>
+						<div class="hr-line-dashed"></div>
+
 						<div class="hr-line-dashed"></div>
 						<div class="form-group row">
 							<div class="col-sm-4 col-sm-offset-2">
@@ -71,6 +120,7 @@
 						</div>
 					</div>
 				</form>
+
 			</div>
 		</div>
 	</div>

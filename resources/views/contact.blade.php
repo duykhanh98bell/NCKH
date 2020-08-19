@@ -36,9 +36,9 @@
 					</div>
 					<div class="col-8">
 						<h3><strong>{{$con->name}}</strong></h3>
-						<p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+						<p><i class="fa fa-map-marker"></i> {{$con->address}}</p>
 						<address>
-							<strong>{{$con->address}}</strong><br>
+							<strong>{{$con->status_user}}</strong><br>
 							<abbr title="Phone">P:</abbr> {{$con->phone}}
 						</address>
 					</div>

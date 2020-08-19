@@ -37,6 +37,7 @@
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Địa chỉ</label>
 						<div class="col-sm-10">
@@ -45,14 +46,35 @@
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Nam Sinh</label>
+						<div class="col-sm-10">
+							<input type="date" name="birth" class="form-control fa fa-calendar">
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Gioi Tinh</label>
+						<div class="col-sm-10">
+							<select class="form-control m-b" name="gender">
+								<option value="Nam">Nam</option>
+								<option value="Nu">Nu</option>
+							</select>
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Phone</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" name="Phone">
+							<input type="number" class="form-control" name="Phone" maxlength = "10">
 							<!-- <input type="text" class="form-control"> -->
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-10">
@@ -61,6 +83,7 @@
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Password</label>
 						<div class="col-sm-10">
@@ -69,6 +92,21 @@
 						</div>
 					</div>
 					<div class="hr-line-dashed"></div>
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Trang thai</label>
+						<div class="col-sm-10">
+							<select class="form-control m-b" name="status_user">
+								<option value="fresher">fresher</option>
+								<option value="junior">junior</option>
+								<option value="middle">Middle</option>
+								<option value="senior">Senior</option>
+								<option value="out">Out</option>
+							</select>
+						</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Avatar</label>
 						<div class="col-sm-10">
@@ -79,11 +117,10 @@
 
 					<div class="form-group row">
 						<label class="col-sm-2 col-form-label">Chức vụ</label>
-
 						<div class="col-sm-10">
 							<select class="form-control m-b" name="user_role">
 								@foreach($role as $ro)
-								<option value="{{$ro->id}}">{{$ro->name}}</option>
+								<option value="{{$ro->id}}">{{$ro->level}}</option>
 								@endforeach
 							</select>
 						</div>

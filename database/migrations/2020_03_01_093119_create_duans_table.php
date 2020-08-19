@@ -15,9 +15,12 @@ class CreateDuansTable extends Migration
     {
         Schema::create('duans', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('name');
+            $table->string('name_duan');
+            $table->string('ma_duan')->nullable();
             $table->text('tomtat');
-            $table->date('deadline');
+            $table->text('chitiet')->nullable();
+            $table->date('deadline')->nullable();
+            $table->date('deadline_now')->nullable();
             $table->string('status');
             $table->timestamps();
         });
